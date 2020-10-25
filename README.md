@@ -11,10 +11,6 @@ The easiest way to install Newman is using NPM. If you have Node.js installed, i
 
 ## Usage
 
-#### Using Newman CLI
-
-```newman run Postcode_io_api.postman_collection.json -e environments/dev.postman_environment.json```
-
 #### Using Npm
 
 ```npm run dev:test```
