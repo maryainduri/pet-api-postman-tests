@@ -1,0 +1,27 @@
+{
+  "name": "postman-pet-api-tests",
+  "version": "1.0.0",
+  "description": "This repository contains [Pet API](https://petstore.swagger.io/#/) REST API tests using [Postman](https://www.postman.com/) and command line [Newman](https://github.com/postmanlabs/newman)",
+  "main": "index.js",
+  "scripts": {
+    "dev:test": "newman run pet_api.postman_collection.json -e environments/dev.postman_environment.json -r htmlextra"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maryainduri/pet-api-postman-tests.git"
+  },
+  "keywords": [
+    "pet",
+    "api",
+    "swagger",
+    "postman",
+    "newman",
+    "APItests"
+  ],
+  "author": "MaryaManjuInduri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maryainduri/pet-api-postman-tests/issues"
+  },
+  "homepage": "https://github.com/maryainduri/pet-api-postman-tests#readme"
+}

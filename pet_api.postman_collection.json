@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "34d77deb-f184-4b0b-8866-f0e61857b915",
+		"name": "pets API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PETS",
+			"item": [
+				{
+					"name": "add a new pet to the store",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": {{$randomInt}},\n  \"category\": {\n    \"id\": 1,\n    \"name\": \"{{$randomProductName}}\"\n  },\n  \"name\": \"{{$randomUserName}}\",\n  \"photoUrls\": [\n    \"test http\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 1,\n      \"name\": \"@pug\"\n    }\n  ],\n  \"status\": \"available\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pet_api_host}}/pet",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find PET by petID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pet_api_host}}/pet/{{pet_ID}}",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"pet",
+								"{{pet_ID}}"
+							]
+						},
+						"description": "fetching information of pet by using PET ID"
+					},
+					"response": []
+				},
+				{
+					"name": "delete a pet by petID ",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{pet_api_host}}/pet/{{pet_ID}}",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"pet",
+								"{{pet_ID}}"
+							]
+						},
+						"description": "deleting pet by using PET ID"
+					},
+					"response": []
+				},
+				{
+					"name": "updating the pet details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": {{pet_ID}},\n  \"category\": {\n    \"id\": 10000,\n    \"name\": \"pug10000\"\n  },\n  \"name\": \"bowbow10000\",\n  \"photoUrls\": [\n    \"testtest143\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 9,\n      \"name\": \"@pug10000\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pet_api_host}}/pet",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"pet"
+							]
+						},
+						"description": "update the pet details in store"
+					},
+					"response": []
+				},
+				{
+					"name": "find pet by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{pet_api_host}}/pet/findByStatus?status=available",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available"
+								}
+							]
+						},
+						"description": "pet has three ststus types availabe,sold,pending"
+					},
+					"response": []
+				},
+				{
+					"name": "upload iamge for a pet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/Apple/Downloads/pexels-photo-1108099.jpeg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pet_api_host}}/pet/10000/uploadImage",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"pet",
+								"10000",
+								"uploadImage"
+							]
+						},
+						"description": "uploading images for a particular pet"
+					},
+					"response": []
+				}
+			],
+			"description": "API for PETS",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "STORE",
+			"item": [
+				{
+					"name": "Place an order for a pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b389e7b-54c7-460c-a0f8-56483c2c36c9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//validate quantity not to be null",
+									"",
+									"pm.test(\"quantity should be 1\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.quantity).to.eql(1);",
+									"});",
+									"",
+									"//validate ststus placed",
+									"",
+									"pm.test(\"status placed\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).not.null;",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": {{$randomInt}},\n  \"petId\": {{$randomInt}},\n  \"quantity\": 1,\n  \"shipDate\": \"2020-10-23T08:46:13.646Z\",\n  \"status\": \"placed\",\n  \"complete\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pet_api_host}}/store/order",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"store",
+								"order"
+							]
+						},
+						"description": "order placed for purchasing the pet"
+					},
+					"response": []
+				},
+				{
+					"name": "Find purchase by orderID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6201acc0-e34e-4e73-a73a-89f9edd30996",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//validate complete status to be true",
+									"pm.test(\"complete to be true\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.complete).to.eql(true);",
+									"});",
+									"",
+									"//validate petId not to be null",
+									"pm.test(\"petId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.petId).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{pet_api_host}}/store/order/838",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"store",
+								"order",
+								"838"
+							]
+						},
+						"description": "fetch the data of the pet by giving petID"
+					},
+					"response": []
+				},
+				{
+					"name": "delete purchase order by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "23cda121-7953-4951-8a64-5fc21560659b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"//validate message contains petID",
+									"",
+									"pm.test(\"message to be 100\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"100\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{pet_api_host}}/store/order/100",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"store",
+								"order",
+								"100"
+							]
+						},
+						"description": "delete purchase order by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "return pet inventory by status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f76e8af-200b-4273-8e1b-1b5febaed840",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//validate pending should be greater than ZERO",
+									"pm.test(\"pending should be greater than 0\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.pending).to.be.greaterThan(0);",
+									"});",
+									"",
+									"//validate the available greater than 0",
+									"",
+									"pm.test(\"available should be greater than 0\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.available).to.be.greaterThan(0);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{pet_api_host}}/store/inventory",
+							"host": [
+								"{{pet_api_host}}"
+							],
+							"path": [
+								"store",
+								"inventory"
+							]
+						},
+						"description": "return pet inventory by status"
+					},
+					"response": []
+				}
+			],
+			"description": "API calls for store purpose",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
