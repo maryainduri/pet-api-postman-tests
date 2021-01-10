@@ -9,6 +9,8 @@ The easiest way to install Newman is using NPM. If you have Node.js installed, i
 
 ```npm install -g newman``` 
 
+```npm install -S newman-reporter-htmlextra```
+
 ## Usage
 
 #### Using Npm
