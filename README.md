@@ -25,7 +25,7 @@ Install [Newman HTML reporter](https://www.npmjs.com/package/newman-reporter-htm
 
 > HTML report generated under newman folder
 
-![alt text](docs/newman-report.png)
+![alt text](docs/report.png)
 
 
 > HTML report generated in Circle CI
