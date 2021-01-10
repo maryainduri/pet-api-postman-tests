@@ -7,7 +7,7 @@ This repository contains [Pet API](https://petstore.swagger.io/#/) REST API test
 ## Installation
 The easiest way to install Newman is using NPM. If you have Node.js installed, it is most likely that you have NPM installed as well.   
 
-```npm install -g newman``` 
+```npm install -S newman``` 
 
 ```npm install -S newman-reporter-htmlextra```
 

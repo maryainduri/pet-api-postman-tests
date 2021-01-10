@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/maryainduri/pet-api-postman-tests#readme",
   "dependencies": {
+    "newman": "^5.2.2",
     "newman-reporter-htmlextra": "^1.19.7"
   }
 }
