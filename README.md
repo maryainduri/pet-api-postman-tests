@@ -21,11 +21,16 @@ The easiest way to install Newman is using NPM. If you have Node.js installed, i
 
 Install [Newman HTML reporter](https://www.npmjs.com/package/newman-reporter-htmlextra)
 
-```npm install -g newman-reporter-htmlextra```
+```npm install -S newman-reporter-htmlextra```
 
 > HTML report generated under newman folder
 
 ![alt text](docs/newman-report.png)
+
+
+> HTML report generated in Circle CI
+
+![alt text](docs/circle-ci-build.png)
 
 
 ## contact
