@@ -17,9 +17,9 @@ jobs:
 
       # Install Node Js
       - name: set up node
-          uses: actions/setup-node@v1
-          with:
-            node-version: '15.x'
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15.x'
 
       # Install NPM
       - name: Update NPM
