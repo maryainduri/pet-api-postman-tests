@@ -4,7 +4,7 @@
   "description": "This repository contains [Pet API](https://petstore.swagger.io/#/) REST API tests using [Postman](https://www.postman.com/) and command line [Newman](https://github.com/postmanlabs/newman)",
   "main": "",
   "scripts": {
-    "dev:test": "newman run --verbose --color on --bail tests/pet_api.postman_collection.json -e env/dev.json -r cli,htmlextra --reporter-htmlextra-export testResults/htmlreport.html"
+    "dev:test": "newman run --verbose --color on tests/pet_api.postman_collection.json -e env/dev.json -r cli,htmlextra"
   },
   "repository": {
     "type": "git",
